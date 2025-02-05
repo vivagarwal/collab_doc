@@ -1,0 +1,6 @@
+[submodule "collab_doc_backend"]
+	path = collab_doc_backend
+	url = https://github.com/vivagarwal/google_doc_backend
+[submodule "collab_doc_frontend"]
+	path = collab_doc_frontend
+	url = https://github.com/vivagarwal/google_doc_frontend
