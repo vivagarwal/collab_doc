@@ -22,6 +22,8 @@ A **real-time collaborative text editor** built with **Spring Boot** (backend) a
 
 ## 🎥 Demo GIF
 
+This shows 2 users simulaneously editing a document without countering each other's changes
+
 ![Demo](media/demo_collab_doc.gif)
 
 ---
