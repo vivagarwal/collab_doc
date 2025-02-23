@@ -4,17 +4,6 @@ A **real-time collaborative text editor** built with **Spring Boot** (backend) a
 
 ---
 
-## 🚀 Features
-
-- **Create, View, and Edit Documents**: Create text-based documents with real-time updates.
-- **Real-Time Collaboration**: Changes from multiple users are synchronized instantly using **WebSockets**.
-- **Persistence**: Edits are saved incrementally and periodically from in memory cache to avoid data loss.
-- **CRDT for Conflict-Free Editing**: Ensures edits from different users merge seamlessly without conflicts.
-- **Scalable Backend**: Built on **Spring Boot**, connected to **Postgres** for document storage.
-- **Cache Disposal**: When all sessions get disconnected for a document, it is flushed into database to free up in-memory cache
-
----
-
 ## 🌐 Live Deployment
 
 [https://google-doc-frontend-plum.vercel.app](https://google-doc-frontend-plum.vercel.app)
@@ -26,6 +15,17 @@ A **real-time collaborative text editor** built with **Spring Boot** (backend) a
 This shows 2 users simulaneously editing a document without countering each other's changes
 
 ![Demo](media/demo_collab_doc.gif)
+
+---
+
+## 🚀 Features
+
+- **Create, View, and Edit Documents**: Create text-based documents with real-time updates.
+- **Real-Time Collaboration**: Changes from multiple users are synchronized instantly using **WebSockets**.
+- **Persistence**: Edits are saved incrementally and periodically from in memory cache to avoid data loss.
+- **CRDT for Conflict-Free Editing**: Ensures edits from different users merge seamlessly without conflicts.
+- **Scalable Backend**: Built on **Spring Boot**, connected to **Postgres** for document storage.
+- **Cache Disposal**: When all sessions get disconnected for a document, it is flushed into database to free up in-memory cache
 
 ---
 
