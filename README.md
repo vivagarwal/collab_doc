@@ -15,7 +15,7 @@ A **real-time collaborative text editor** built with **Spring Boot** (backend) a
 
 ---
 
-## 🌐 Live Demo
+## 🌐 Live Deployment
 
 [https://google-doc-frontend-plum.vercel.app](https://google-doc-frontend-plum.vercel.app)
 
