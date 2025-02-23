@@ -8,9 +8,10 @@ A **real-time collaborative text editor** built with **Spring Boot** (backend) a
 
 - **Create, View, and Edit Documents**: Create text-based documents with real-time updates.
 - **Real-Time Collaboration**: Changes from multiple users are synchronized instantly using **WebSockets**.
-- **Persistence**: Edits are saved incrementally to avoid data loss.
+- **Persistence**: Edits are saved incrementally and periodically from in memory cache to avoid data loss.
 - **CRDT for Conflict-Free Editing**: Ensures edits from different users merge seamlessly without conflicts.
-- **Scalable Backend**: Built on **Spring Boot**, connected to **MongoDB** for document storage.
+- **Scalable Backend**: Built on **Spring Boot**, connected to **Postgres** for document storage.
+- **Cache Disposal**: When all sessions get disconnected for a document, it is flushed into database to free up in-memory cache
 
 ---
 
@@ -32,15 +33,15 @@ This shows 2 users simulaneously editing a document without countering each othe
 
 - **Backend**: Spring Boot application with REST APIs and WebSocket configuration.
 - **Frontend**: React application for the editor interface.
-- **Database**: MongoDB for storing documents and edit history.
+- **Database**: Postgres for storing documents and edit history.
 
 ---
 
 ## 🛠️ Technologies Used
 
-- **Backend**: Spring Boot, WebSockets, MongoDB
+- **Backend**: Spring Boot, WebSockets, Postgres
 - **Frontend**: React, Vite
-- **Database**: MongoDB
+- **Database**: Postgres
 - **Version Control**: Git
 
 ---
@@ -63,9 +64,12 @@ git clone --recurse-submodules https://github.com/vivagarwal/collab_doc.git
 
 2. Create a `.env` file in the root of the backend directory:
     ```plaintext
-    MONGO_URL=<your_mongodb_connection_string>
+    POSTGRES_URL=jdbc:postgresql://localhost:5432/google_doc
+    POSTGRES_USER=postgres
+    POSTGRES_PASSWORD=postgres
     FRONTEND_URL=http://localhost:3000  # Or your frontend URL
     ```
+    replace with appropriate values
 
 3. Build and run the backend:
     ```bash
@@ -161,18 +165,18 @@ git clone --recurse-submodules https://github.com/vivagarwal/collab_doc.git
 | Checkpoint 1   | ✅          | Basic document creation, storage, and retrieval through REST APIs              |
 | Checkpoint 2   | ✅          | WebSocket setup for real-time document updates                                 |
 | Checkpoint 3   | ✅          | Periodic persistence of document edits to the database                         |
-| Checkpoint 4   | 🔄          | Track cursor positions and handle character-level edits                        |
-| Checkpoint 5   | 🔄          | Implement CRDT for conflict-free real-time collaboration                       |
+| Checkpoint 4   | ✅          | Track cursor positions and handle character-level edits                        |
+| Checkpoint 5   | ✅          | Implement CRDT for conflict-free real-time collaboration                       |
 | Checkpoint 6   | 🔄          | Finalize a fully working MVP with persistence and conflict resolution using CRDT |
 
 ---
 
-## 🛠️ CRDT Integration (Planned)
+## 🛠️ CRDT Integration
 
 The CRDT model ensures that changes from different users are merged correctly. The basic flow involves:
 - Each edit operation is transformed into a **CRDT event**.
 - Events are applied locally and broadcast to all connected users.
-- MongoDB stores the CRDT representation to maintain consistency across reloads.
+- Postgres stores the CRDT representation to maintain consistency across reloads.
 
 ---
 
